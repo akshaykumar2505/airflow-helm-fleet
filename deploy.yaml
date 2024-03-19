@@ -4,8 +4,5 @@ metadata:
   name: airflow-k8s
   namespace: fleet-local
 spec:
-  repo: https://github.com/smartdataHQ/pipelines
-  branch: akshaykumar2505
-  clientSecretName: git-ssh-key
-  paths:
-  - charts
+  repo: https://github.com/akshaykumar2505/airflow-helm-fleet
+  branch: main
