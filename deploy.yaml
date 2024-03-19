@@ -1,0 +1,11 @@
+kind: GitRepo
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: airflow-k8s
+  namespace: fleet-local
+spec:
+  repo: https://github.com/smartdataHQ/pipelines
+  branch: akshaykumar2505
+  clientSecretName: git-ssh-key
+  paths:
+  - charts
