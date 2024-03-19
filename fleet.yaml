@@ -7,12 +7,12 @@ namespace: airflow-k8s
 # Custom helm options
 helm:
   # The release name to use. If empty a generated release name will be used
-  releaseName: "airflow-stable"
+  releaseName: ""
 
   # The directory of the chart in the repo.  Also any valid go-getter supported
   # URL can be used there is specify where to download the chart from.
   # If repo below is set this value if the chart name in the repo
-  chart: "airflow-stable/airflow"
+  chart: "airflow-helm/charts"
 
   # An https to a valid Helm repository to download the chart from
   repo: "https://airflow-helm.github.io/charts"
