@@ -28,7 +28,13 @@ airflow:
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/configuration/airflow-configs.md
   config:
     AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "False"
-    AIRFLOW__CORE__LOAD_EXAMPLES: "False"       
+    AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    AIRFLOW__EMAIL__EMAIL_BACKEND: "airflow.utils.email.send_email_smtp"
+    AIRFLOW__EMAIL__EMAIL_CONN_ID: "smtp_default"        
+    AIRFLOW__SMTP__SMTP_HOST: "smtp.sendgrid.net"
+    AIRFLOW__SMTP__SMTP_STARTTLS: "True"
+    AIRFLOW__SMTP__SMTP_SSL: "False"    
+    AIRFLOW__SMTP__SMTP_PORT: "587"    
 
   ## a list of users to create
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/security/airflow-users.md
@@ -63,13 +69,28 @@ airflow:
     - name: AIRFLOW__CORE__FERNET_KEY
       valueFrom:
         secretKeyRef:
-          name: airflow-fernet-key
+          name: airflow-core-fernet-key
           key: value
     - name: AIRFLOW__WEBSERVER__SECRET_KEY
       valueFrom:
         secretKeyRef:
           name: airflow-webserver-secret-key
+          key: value 
+    - name: AIRFLOW__SMTP__SMTP_USER
+      valueFrom:
+        secretKeyRef:
+          name: airflow-smtp-smtp-user
+          key: value      
+    - name: AIRFLOW__SMTP__SMTP_MAIL_FROM
+      valueFrom:
+        secretKeyRef:
+          name: airflow-smtp-smtp-mail-from
           key: value
+    - name: AIRFLOW__SMTP__SMTP_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: airflow-smtp-smtp-password
+          key: value        
 
   ## extra VolumeMounts for the airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-persistent-volumes.md
@@ -295,7 +316,7 @@ extraManifests: []
 pgbouncer:
   ## if the pgbouncer Deployment is created
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/database/pgbouncer.md
-  enabled: true
+  enabled: false
 
   ## resource requests/limits for the pgbouncer Pods
   ## [SPEC] https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#resourcerequirements-v1-core
@@ -312,7 +333,7 @@ postgresql:
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/database/embedded-database.md
   ## [WARNING] the embedded Postgres is NOT SUITABLE for production deployments of Airflow
   ## [WARNING] consider using an external database with `externalDatabase.*`
-  enabled: true
+  enabled: false
 
   ## configs for the PVC of postgresql
   persistence:
@@ -328,28 +349,28 @@ externalDatabase:
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/database/external-database.md
   type: postgres
   
-  #host: hostname
-  #port: 5432
+  host: host.minikube.internal
+  port: 5432
   
   ## the schema which will contain the airflow tables
-  #database: airflow_db
+  database: airflow_db
 
   ## (username - option 1) a plain-text helm value
-  #user: airflow_user
+  user: airflow_user
   
   ## (username - option 2) a Kubernetes secret in your airflow namespace
   #userSecret: "airflow-cluster1-database-credentials"
   #userSecretKey: "username"
 
   ## (password - option 1) a plain-text helm value
-  #password: airflow_pass
+  password: airflow_pass
 
   ## (password - option 2) a Kubernetes secret in your airflow namespace
   #passwordSecret: "airflow-postgres-password"
   #passwordSecretKey: "password"
 
   ## use this for any extra connection-string settings, e.g. ?sslmode=disable
-  #properties: ""
+  properties: ""
 
 ###################################
 ## DATABASE | Embedded Redis
