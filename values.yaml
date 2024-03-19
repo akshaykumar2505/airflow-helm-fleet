@@ -29,12 +29,12 @@ airflow:
   config:
     AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "False"
     AIRFLOW__CORE__LOAD_EXAMPLES: "False"
-    AIRFLOW__EMAIL__EMAIL_BACKEND: "airflow.utils.email.send_email_smtp"
-    AIRFLOW__EMAIL__EMAIL_CONN_ID: "smtp_default"        
-    AIRFLOW__SMTP__SMTP_HOST: "smtp.sendgrid.net"
-    AIRFLOW__SMTP__SMTP_STARTTLS: "True"
-    AIRFLOW__SMTP__SMTP_SSL: "False"    
-    AIRFLOW__SMTP__SMTP_PORT: "587"    
+    #AIRFLOW__EMAIL__EMAIL_BACKEND: "airflow.utils.email.send_email_smtp"
+    #AIRFLOW__EMAIL__EMAIL_CONN_ID: "smtp_default"        
+    #AIRFLOW__SMTP__SMTP_HOST: "smtp.sendgrid.net"
+    #AIRFLOW__SMTP__SMTP_STARTTLS: "True"
+    #AIRFLOW__SMTP__SMTP_SSL: "False"    
+    #AIRFLOW__SMTP__SMTP_PORT: "587"    
 
   ## a list of users to create
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/security/airflow-users.md
