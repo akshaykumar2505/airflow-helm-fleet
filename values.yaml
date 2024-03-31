@@ -75,22 +75,7 @@ airflow:
       valueFrom:
         secretKeyRef:
           name: airflow-webserver-secret-key
-          key: value 
-    - name: AIRFLOW__SMTP__SMTP_USER
-      valueFrom:
-        secretKeyRef:
-          name: airflow-smtp-smtp-user
-          key: value      
-    - name: AIRFLOW__SMTP__SMTP_MAIL_FROM
-      valueFrom:
-        secretKeyRef:
-          name: airflow-smtp-smtp-mail-from
-          key: value
-    - name: AIRFLOW__SMTP__SMTP_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: airflow-smtp-smtp-password
-          key: value        
+          key: value       
 
   ## extra VolumeMounts for the airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-persistent-volumes.md
