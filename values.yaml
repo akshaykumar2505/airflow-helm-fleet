@@ -29,6 +29,7 @@ airflow:
   config:
     AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "False"
     AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    
     #AIRFLOW__EMAIL__EMAIL_BACKEND: "airflow.utils.email.send_email_smtp"
     #AIRFLOW__EMAIL__EMAIL_CONN_ID: "smtp_default"        
     #AIRFLOW__SMTP__SMTP_HOST: "smtp.sendgrid.net"
