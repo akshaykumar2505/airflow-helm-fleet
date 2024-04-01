@@ -64,39 +64,6 @@ airflow:
   ## [WARNING] this feature is not recommended for production use, see docs
   extraPipPackages: []
 
-  ## extra manifests
-  extraManifests:
-    - |
-      apiVersion: v1
-      kind: ConfigMap
-      metadata:
-        name: bytewax-config
-      data:
-        KAFKA_HOST: 'host.minikube.internal'
-        KAFKA_PORT: '9092'
-
-        REDIS_HOST: 'host.minikube.internal'
-        REDIS_PORT: '6379'
-        REDIS_DB: '0'
-        REDIS_PASSWORD: ''
-
-        POSTGRES_HOST: 'host.minikube.internal'
-        POSTGRES_PORT: '5432'
-        POSTGRES_DB: 'ssp'
-        POSTGRES_USER: 'some'
-        POSTGRES_PASSWORD: 'other'
-
-        CLICKHOUSE_PORT: '8123'
-        CLICKHOUSE_DB: 'my_database'
-
-        CLICKHOUSE_HOST: 'host.minikube.internal'  
-        CLICKHOUSE_USER: 'username'
-        CLICKHOUSE_PASSWORD: 'password'
-
-        DB_PATH: ''
-        RAW_PATH: ''
-        RUST_BACKTRACE: 'full'
-        GID_ROOT: 'https://the.gid.is'
   ## extra environment variables for the airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-environment-variables.md
   extraEnv: 
@@ -332,7 +299,38 @@ serviceAccount:
 
 ## a list of extra Kubernetes manifests that will be deployed alongside the chart
 ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/extra-manifests.md
-extraManifests: []
+extraManifests: 
+  - |
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: bytewax-config
+    data:
+      KAFKA_HOST: 'host.minikube.internal'
+      KAFKA_PORT: '9092'
+
+      REDIS_HOST: 'host.minikube.internal'
+      REDIS_PORT: '6379'
+      REDIS_DB: '0'
+      REDIS_PASSWORD: ''
+
+      POSTGRES_HOST: 'host.minikube.internal'
+      POSTGRES_PORT: '5432'
+      POSTGRES_DB: 'ssp'
+      POSTGRES_USER: 'some'
+      POSTGRES_PASSWORD: 'other'
+
+      CLICKHOUSE_PORT: '8123'
+      CLICKHOUSE_DB: 'my_database'
+
+      CLICKHOUSE_HOST: 'host.minikube.internal'  
+      CLICKHOUSE_USER: 'username'
+      CLICKHOUSE_PASSWORD: 'password'
+
+      DB_PATH: ''
+      RAW_PATH: ''
+      RUST_BACKTRACE: 'full'
+      GID_ROOT: 'https://the.gid.is'
 
 ###################################
 ## DATABASE | PgBouncer
