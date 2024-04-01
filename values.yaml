@@ -76,7 +76,12 @@ airflow:
       valueFrom:
         secretKeyRef:
           name: airflow-webserver-secret-key
-          key: value       
+          key: value  
+    - name: WOD_AUTH
+      valueFrom:
+        secretKeyRef:
+          name: wod_auth
+          key: value     
 
   ## extra VolumeMounts for the airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-persistent-volumes.md
