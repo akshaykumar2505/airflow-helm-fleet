@@ -300,8 +300,7 @@ serviceAccount:
 ## a list of extra Kubernetes manifests that will be deployed alongside the chart
 ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/extra-manifests.md
 extraManifests: 
-  - |
-    apiVersion: v1
+  - apiVersion: v1
     kind: ConfigMap
     metadata:
       name: bytewax-config
