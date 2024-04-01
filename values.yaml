@@ -236,7 +236,7 @@ dags:
   ## configs for the git-sync sidecar
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/dags/load-dag-definitions.md
   gitSync:
-    enabled: true
+    enabled: false
     
     ## NOTE: some git providers will need an `ssh://` prefix
     repo: "git@github.com:smartdataHQ/pipelines.git"
