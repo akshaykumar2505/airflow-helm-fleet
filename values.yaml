@@ -80,7 +80,7 @@ airflow:
     - name: WOD_AUTH
       valueFrom:
         secretKeyRef:
-          name: wod_auth
+          name: wod-auth
           key: value     
 
   ## extra VolumeMounts for the airflow Pods
