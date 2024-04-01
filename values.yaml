@@ -394,7 +394,7 @@ externalDatabase:
   #userSecretKey: "username"
 
   ## (password - option 1) a plain-text helm value
-  password: password
+  password: airflow_pass
 
   ## (password - option 2) a Kubernetes secret in your airflow namespace
   #passwordSecret: "airflow-postgres-password"
