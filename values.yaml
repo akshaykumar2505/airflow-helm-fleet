@@ -8,8 +8,8 @@ airflow:
   ## configs for the airflow container image
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/configuration/airflow-version.md
   image:
-    repository: apache/airflow
-    tag: 2.6.3-python3.9
+    repository: airflow
+    tag: bytewax-2.7.3
 
   ## the airflow executor type to use
   executor: KubernetesExecutor
@@ -236,7 +236,7 @@ dags:
   ## configs for the git-sync sidecar
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/dags/load-dag-definitions.md
   gitSync:
-    enabled: false
+    enabled: true
     
     ## NOTE: some git providers will need an `ssh://` prefix
     repo: "git@github.com:smartdataHQ/pipelines.git"
