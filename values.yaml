@@ -66,7 +66,7 @@ airflow:
 
   ## extra environment variables for the airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-environment-variables.md
-  extraEnv: 
+  extraEnv:    
     - name: AIRFLOW__CORE__FERNET_KEY
       valueFrom:
         secretKeyRef:
@@ -76,7 +76,7 @@ airflow:
       valueFrom:
         secretKeyRef:
           name: airflow-webserver-secret-key
-          key: value  
+          key: value
     - name: KAFKA_HOST
       value: "host.minikube.internal"
     - name: KAFKA_PORT
@@ -88,7 +88,10 @@ airflow:
     - name: REDIS_DB
       value: "0"
     - name: REDIS_PASSWORD
-      value: ""
+      valueFrom:
+        secretKeyRef:
+          name: redis-password
+          key: value
     - name: POSTGRES_HOST
       value: "host.minikube.internal"
     - name: POSTGRES_PORT
@@ -98,7 +101,10 @@ airflow:
     - name: POSTGRES_USER
       value: "some"
     - name: POSTGRES_PASSWORD
-      value: "other" 
+      valueFrom:
+        secretKeyRef:
+          name: postgres-password
+          key: value 
     - name: CLICKHOUSE_PORT
       value: "8123"
     - name: CLICKHOUSE_DB
@@ -108,15 +114,18 @@ airflow:
     - name: CLICKHOUSE_USER
       value: "username"
     - name: CLICKHOUSE_PASSWORD
-      value: "password"
+      valueFrom:
+        secretKeyRef:
+          name: clickhouse-password
+          key: value
     - name: DB_PATH
-      value: "" 
+      value: "/pipedrive/databases" 
     - name: RAW_PATH
-      value: ""
+      value: "/pipedrive/raw"
     - name: RUST_BACKTRACE
       value: "full"
     - name: GID_ROOT
-      value: "https://the.gid.is"   
+      value: "https://the.gid.is"        
     - name: WOD_AUTH
       valueFrom:
         secretKeyRef:
