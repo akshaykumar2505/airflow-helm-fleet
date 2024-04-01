@@ -17,12 +17,12 @@ airflow:
   ## the fernet encryption key (sets `AIRFLOW__CORE__FERNET_KEY`)
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/security/set-fernet-key.md
   ## [WARNING] change from default value to ensure security
-  fernetKey: ""
+  fernetKey: "2FK2SvxDOvfPDfZDk4AxT4dXoCIAe2_LOSC8ftZleH4="
 
   ## the secret_key for flask (sets `AIRFLOW__WEBSERVER__SECRET_KEY`)
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/security/set-webserver-secret-key.md
   ## [WARNING] change from default value to ensure security
-  webserverSecretKey: ""
+  webserverSecretKey: "2FK2SvxDOvfPDfZDk4AxT4dXoCIAe2_LOSC8ftZleH4="
 
   ## environment variables for airflow configs
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/configuration/airflow-configs.md
@@ -67,16 +67,16 @@ airflow:
   ## extra environment variables for the airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-environment-variables.md
   extraEnv: 
-    - name: AIRFLOW__CORE__FERNET_KEY
-      valueFrom:
-        secretKeyRef:
-          name: airflow-core-fernet-key
-          key: value
-    - name: AIRFLOW__WEBSERVER__SECRET_KEY
-      valueFrom:
-        secretKeyRef:
-          name: airflow-webserver-secret-key
-          key: value       
+    #- name: AIRFLOW__CORE__FERNET_KEY
+      #valueFrom:
+        #secretKeyRef:
+          #name: airflow-core-fernet-key
+          #key: value
+    #- name: AIRFLOW__WEBSERVER__SECRET_KEY
+      #valueFrom:
+        #secretKeyRef:
+          #name: airflow-webserver-secret-key
+          #key: value       
 
   ## extra VolumeMounts for the airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-persistent-volumes.md
