@@ -364,7 +364,7 @@ postgresql:
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/database/embedded-database.md
   ## [WARNING] the embedded Postgres is NOT SUITABLE for production deployments of Airflow
   ## [WARNING] consider using an external database with `externalDatabase.*`
-  enabled: true
+  enabled: false
 
   ## configs for the PVC of postgresql
   persistence:
@@ -380,28 +380,28 @@ externalDatabase:
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/database/external-database.md
   type: postgres
   
-  #host: host.minikube.internal
-  #port: 5432
+  host: host.minikube.internal
+  port: 5432
   
   ## the schema which will contain the airflow tables
-  #database: airflow_db
+  database: airflow_db
 
   ## (username - option 1) a plain-text helm value
-  #user: airflow_user
+  user: airflow_user
   
   ## (username - option 2) a Kubernetes secret in your airflow namespace
   #userSecret: "airflow-cluster1-database-credentials"
   #userSecretKey: "username"
 
   ## (password - option 1) a plain-text helm value
-  #password: airflow_pass
+  password: password
 
   ## (password - option 2) a Kubernetes secret in your airflow namespace
   #passwordSecret: "airflow-postgres-password"
   #passwordSecretKey: "password"
 
   ## use this for any extra connection-string settings, e.g. ?sslmode=disable
-  #properties: ""
+  properties: ""
 
 ###################################
 ## DATABASE | Embedded Redis
