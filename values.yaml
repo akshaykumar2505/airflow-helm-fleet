@@ -77,55 +77,55 @@ airflow:
         secretKeyRef:
           name: airflow-webserver-secret-key
           key: value
-    - name: KAFKA_HOST
-      value: "host.minikube.internal"
-    - name: KAFKA_PORT
-      value: "9092"
-    - name: REDIS_HOST
-      value: "host.minikube.internal"
-    - name: REDIS_PORT
-      value: "6379"
-    - name: REDIS_DB
-      value: "0"
+    #- name: KAFKA_HOST
+    #  value: "host.minikube.internal"
+    #- name: KAFKA_PORT
+    #  value: "9092"
+    #- name: REDIS_HOST
+    #  value: "host.minikube.internal"
+    #- name: REDIS_PORT
+    #  value: "6379"
+    #- name: REDIS_DB
+    #  value: "0"
     - name: REDIS_PASSWORD
       valueFrom:
         secretKeyRef:
           name: redis-password
           key: value
-    - name: POSTGRES_HOST
-      value: "host.minikube.internal"
-    - name: POSTGRES_PORT
-      value: "5432"
-    - name: POSTGRES_DB
-      value: "ssp"
-    - name: POSTGRES_USER
-      value: "some"
+    #- name: POSTGRES_HOST
+    #  value: "host.minikube.internal"
+    #- name: POSTGRES_PORT
+    #  value: "5432"
+    #- name: POSTGRES_DB
+    #  value: "ssp"
+    #- name: POSTGRES_USER
+    #  value: "some"
     - name: POSTGRES_PASSWORD
       valueFrom:
         secretKeyRef:
           name: postgres-password
           key: value 
-    - name: CLICKHOUSE_PORT
-      value: "8123"
-    - name: CLICKHOUSE_DB
-      value: "my_database"
-    - name: CLICKHOUSE_HOST
-      value: "host.minikube.internal"
-    - name: CLICKHOUSE_USER
-      value: "username"
+    #- name: CLICKHOUSE_PORT
+    #  value: "8123"
+    #- name: CLICKHOUSE_DB
+    #  value: "my_database"
+    #- name: CLICKHOUSE_HOST
+    #  value: "host.minikube.internal"
+    #- name: CLICKHOUSE_USER
+    #  value: "username"
     - name: CLICKHOUSE_PASSWORD
       valueFrom:
         secretKeyRef:
           name: clickhouse-password
           key: value
-    - name: DB_PATH
-      value: "/pipedrive/databases" 
-    - name: RAW_PATH
-      value: "/pipedrive/raw"
-    - name: RUST_BACKTRACE
-      value: "full"
-    - name: GID_ROOT
-      value: "https://the.gid.is"  
+    #- name: DB_PATH
+    #  value: "/pipedrive/databases" 
+    #- name: RAW_PATH
+    #  value: "/pipedrive/raw"
+    #- name: RUST_BACKTRACE
+    #  value: "full"
+    #- name: GID_ROOT
+    #  value: "https://the.gid.is"  
     - name: AIRFLOW__SMTP__SMTP_MAIL_FROM
       valueFrom:
         secretKeyRef:
