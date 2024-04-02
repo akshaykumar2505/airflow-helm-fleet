@@ -135,14 +135,11 @@ web:
   webserverConfig:
     stringOverride: |
       from airflow import configuration as conf
-      from flask_appbuilder.security.manager import AUTH_DB
-      
+      from flask_appbuilder.security.manager import AUTH_DB      
       # the SQLAlchemy connection string
-      SQLALCHEMY_DATABASE_URI = conf.get("core", "SQL_ALCHEMY_CONN")
-      
+      SQLALCHEMY_DATABASE_URI = conf.get("core", "SQL_ALCHEMY_CONN")      
       # use embedded DB for auth
       AUTH_TYPE = AUTH_DB
-
     existingSecret: ""
 workers:
   enabled: false
@@ -193,18 +190,11 @@ externalDatabase:
   host: host.minikube.internal
   port: 5432
   database: airflow_db
-  user: airflow_user
-  ## (password - option 1) a plain-text helm value
-  password: airflow_pass
-
-  ## (password - option 2) a Kubernetes secret in your airflow namespace
-  #passwordSecret: "airflow-postgres-password"
-  #passwordSecretKey: "password"
-
-  ## use this for any extra connection-string settings, e.g. ?sslmode=disable
+  user: airflow_user  
+  passwordSecret: "airflow-postgres-password"
+  passwordSecretKey: "password"
   properties: ""
-redis:
-  ## if the `stable/redis` chart is used
+redis:  
   enabled: false
 externalRedis:
   host: localhost
