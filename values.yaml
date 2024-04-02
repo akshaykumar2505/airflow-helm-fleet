@@ -309,7 +309,7 @@ dags:
     
     ## NOTE: some git providers will need an `ssh://` prefix
     repo: "git@github.com:smartdataHQ/pipelines.git"
-    branch: "akshaykumar2505"
+    branch: "main"
     revision: "HEAD"
     
     ## the sub-path within your repo where dags are located
