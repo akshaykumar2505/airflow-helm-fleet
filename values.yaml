@@ -189,8 +189,8 @@ externalDatabase:
   type: postgres  
   host: host.minikube.internal
   port: 5432
-  database: airflow_db
-  user: airflow_user  
+  database: airflow_postgres_db
+  user: airflow_postgres_user  
   passwordSecret: "airflow-postgres-password"
   passwordSecretKey: "value"
   properties: ""
