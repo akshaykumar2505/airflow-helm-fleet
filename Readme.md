@@ -10,7 +10,7 @@
 
 ## Generate public and private keys for git sync provider 
 `ssh-keygen -t rsa -b 4096 -C "your-mail@gmail.com"`
-# Add the public key to repository settings deploy keys
+## Add the public key to repository settings deploy keys
 
 ## Create private key as a secret
 `kubectl create secret generic airflow-ssh-git-secret --from-file=id_rsa=~/.ssh/airflow_ssh_key --namespace airflow-k8s`
@@ -20,16 +20,16 @@
 
 ## Configure gmail SMTP for email on failure alert
 
-# In gmail settings select Forwarding and POP/IMAP tab and update status to enable in IMAP access 
-# Enable 2-Factor authentication for your gmail account
-# visit `https://myaccount.google.com/apppasswords` to create a secure password
+## In gmail settings select Forwarding and POP/IMAP tab and update status to enable in IMAP access 
+## Enable 2-Factor authentication for your gmail account
+## visit `https://myaccount.google.com/apppasswords` to create a secure password
 
 ## Configure sendgrid SMTP for email on failure alert
 
-# Create a account at `https://sendgrid.com
-# In dashboard go to settings select sender authentication verify a single sender if status is not verified 
-# In Email Api select Integration guide and choose SMTP relay and generate API key
-# airflow-smtp-smtp-user secret value is 'apikey' for sendgrid SMTP
+## Create a account at `https://sendgrid.com
+## In dashboard go to settings select sender authentication verify a single sender if status is not verified 
+## In Email Api select Integration guide and choose SMTP relay and generate API key
+## airflow-smtp-smtp-user secret value is 'apikey' for sendgrid SMTP
 
 ## Configure external postgres database
 ```
@@ -37,7 +37,7 @@ CREATE DATABASE airflow_postgres_db;
 CREATE USER airflow_postgres_user WITH PASSWORD 'airflow_postgres_password';
 GRANT ALL PRIVILEGES ON DATABASE airflow_postgres_db TO airflow_postgres_user;
 ```
-# Connect to airflow_db to run query;
+## Connect to airflow_db to run query;
 ```
 GRANT ALL ON SCHEMA public TO airflow_postgres_user;
 ```
