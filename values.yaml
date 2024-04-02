@@ -36,7 +36,7 @@ airflow:
       valueFrom:
         secretKeyRef:
           name: airflow-webserver-secret-key
-          key: value
+          key: value       
     - name: KAFKA_HOST
       value: "host.minikube.internal"
     - name: KAFKA_PORT
@@ -192,7 +192,7 @@ externalDatabase:
   database: airflow_db
   user: airflow_user  
   passwordSecret: "airflow-postgres-password"
-  passwordSecretKey: "password"
+  passwordSecretKey: "value"
   properties: ""
 redis:  
   enabled: false
