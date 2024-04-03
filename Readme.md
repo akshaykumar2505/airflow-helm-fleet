@@ -42,7 +42,12 @@ GRANT ALL PRIVILEGES ON DATABASE airflow_postgres_db TO airflow_postgres_user;
 GRANT ALL ON SCHEMA public TO airflow_postgres_user;
 ```
 ## Create postgres password as a secret
+## Update host, port, database, user in values.yaml at airflow.externalDatabase
 `kubectl create secret generic airflow-postgres-password --from-literal="value=airflow_postgres_password" --namespace pipelines`
+
+## Configure external redis
+## Update host, port, databaseNumber in values.yaml at airflow.externalRedis
+`kubectl create secret generic airflow-redis-password --from-literal="value=airflow_redis_password" --namespace pipelines`
 
 ## Create Secrets
 ```
