@@ -197,4 +197,8 @@ externalDatabase:
 redis:  
   enabled: false
 externalRedis:
-  host: localhost
+  host: host.minikube.internal
+  port: 6379
+  databaseNumber: 0
+  passwordSecret: "airflow-redis-password"
+  passwordSecretKey: "value"
