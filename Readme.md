@@ -12,9 +12,6 @@
 `ssh-keygen -t rsa -b 4096 -C "your-mail@gmail.com"`
 ## Add the public key to repository settings deploy keys
 
-## Create private key as a secret
-`kubectl create secret generic airflow-ssh-git-secret --from-file=id_rsa=~/.ssh/airflow_ssh_key --namespace airflow-k8s`
-
 ## Build custom docker image with bytewax dependencies in pipelines repository
 `docker build -f .\Airflow -t airflow:bytewax-2.7.3 .`
 
@@ -43,25 +40,25 @@ GRANT ALL ON SCHEMA public TO airflow_postgres_user;
 ```
 ## Create postgres password as a secret
 ## Update host, port, database, user in values.yaml at airflow.externalDatabase
-`kubectl create secret generic airflow-postgres-password --from-literal="value=airflow_postgres_password" --namespace pipelines`
 
 ## Configure external redis
 ## Update host, port, databaseNumber in values.yaml at airflow.externalRedis
-`kubectl create secret generic airflow-redis-password --from-literal="value=airflow_redis_password" --namespace pipelines`
 
 ## Create Secrets
 ```
-kubectl create secret generic airflow-core-fernet-key --from-literal="value=uuid" --namespace pipelines
-kubectl create secret generic airflow-webserver-secret-key --from-literal="value=uuid" --namespace pipelines
-kubectl create secret generic airflow-smtp-smtp-mail-from --from-literal="value=example@gmail.com" --namespace pipelines
-kubectl create secret generic airflow-smtp-smtp-user --from-literal="value=apikey" --namespace pipelines
-kubectl create secret generic airflow-smtp-smtp-password --from-literal="value=password" --namespace pipelines
-kubectl create secret generic redis-password --from-literal="value=" --namespace pipelines
-kubectl create secret generic postgres-password --from-literal="value=password" --namespace pipelines
-kubectl create secret generic clickhouse-password --from-literal="value=password" --namespace pipelines
-kubectl create secret generic wod-auth --from-literal="value=password" --namespace pipelines
+kubectl create secret generic airflow --from-file=airflow-ssh-git-secret=~/.ssh/airflow_ssh_key \
+									  --from-literal="airflow-core-fernet-key=uuid" \
+									  --from-literal="airflow-webserver-secret-key=uuid" \
+									  --from-literal="airflow-postgres-password=airflow_postgres_password" \
+									  --from-literal="airflow-redis-password=" \
+									  --from-literal="airflow-smtp-smtp-mail-from=example@gmail.com" \
+									  --from-literal="airflow-smtp-smtp-user=apikey" \
+									  --from-literal="airflow-smtp-smtp-password=password" \
+									  --from-literal="redis-password=" \
+									  --from-literal="postgres-password=password" \
+									  --from-literal="clickhouse-password=password" \
+									  --from-literal="wod-auth=username:password" --namespace pipelines
 ```
-s
 ## Deploy using fleet
 ```
 kubectl apply -f .\deploy.yaml
