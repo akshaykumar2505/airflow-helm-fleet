@@ -25,7 +25,7 @@ airflow:
   usersTemplates:    
     ADMIN_PASSWORD:
       kind: secret
-      name: airflow
+      name: airflow-password
       key: airflow-admin-password    
   usersUpdate: true    
   connections: []
