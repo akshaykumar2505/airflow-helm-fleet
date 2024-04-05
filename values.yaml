@@ -27,6 +27,7 @@ airflow:
       kind: secret
       name: airflow
       key: airflow-admin-password    
+  usersUpdate: false    
   connections: []
   variables: []
   pools: [] 
