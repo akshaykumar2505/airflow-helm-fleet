@@ -64,7 +64,7 @@ airflow:
       valueFrom:
         secretKeyRef:
           name: airflow
-          key: value 
+          key: postgres-password 
     - name: CLICKHOUSE_PORT
       value: "8123"
     - name: CLICKHOUSE_DB
