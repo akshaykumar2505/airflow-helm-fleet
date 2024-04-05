@@ -24,7 +24,7 @@ airflow:
       lastName: admin   
   usersTemplates:    
     AIRFLOW_ADMIN_PASSWORD:
-      kind: literal
+      kind: Opaque
       name: airflow
       key: airflow-admin-password    
   usersUpdate: false    
