@@ -17,17 +17,11 @@ airflow:
     AIRFLOW__SMTP__SMTP_PORT: "587"    
   users:
     - username: admin
-      password: ${ADMIN_PASSWORD}
+      password: admin
       role: Admin
       email: admin@example.com
       firstName: admin
-      lastName: admin   
-  usersTemplates:    
-    ADMIN_PASSWORD:
-      kind: secret
-      name: airflow-password
-      key: airflow-admin-password    
-  usersUpdate: true    
+      lastName: admin      
   connections: []
   variables: []
   pools: [] 
