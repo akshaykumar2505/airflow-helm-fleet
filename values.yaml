@@ -24,7 +24,7 @@ airflow:
       lastName: admin   
   usersTemplates:    
     AIRFLOW_ADMIN_PASSWORD:
-      kind: Opaque
+      kind: literal
       name: airflow
       key: airflow-admin-password    
   usersUpdate: false    
@@ -33,6 +33,11 @@ airflow:
   pools: [] 
   extraPipPackages: []
   extraEnv:    
+    - name: AIRFLOW_ADMIN_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: airflow
+          key: airflow-admin-password
     - name: AIRFLOW__CORE__FERNET_KEY
       valueFrom:
         secretKeyRef:
