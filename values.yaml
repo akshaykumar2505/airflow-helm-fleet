@@ -106,8 +106,20 @@ airflow:
         secretKeyRef:
           name: airflow
           key: wod-auth     
-  extraVolumeMounts: []
-  extraVolumes: []
+  extraVolumeMounts: 
+    - name: pipedrive-databases
+      mountPath: /pipedrive/databases
+      readOnly: false
+    - name: pipedrive-raw
+      mountPath: /pipedrive/raw
+      readOnly: false  
+  extraVolumes: 
+    - name: pipedrive-databases
+      persistentVolumeClaim:
+        claimName: pipedrive-databases
+    - name: pipedrive-raw
+      persistentVolumeClaim:
+        claimName: pipedrive-raw     
   kubernetesPodTemplate:
     stringOverride: ""
     resources: {}
