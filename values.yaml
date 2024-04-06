@@ -108,10 +108,10 @@ airflow:
           key: wod-auth     
   extraVolumeMounts: 
     - name: pipedrive-databases
-      mountPath: /pipedrive/databases
+      mountPath: /mnt
       readOnly: false
     - name: pipedrive-raw
-      mountPath: /pipedrive/raw
+      mountPath: /mnt
       readOnly: false  
   extraVolumes: 
     - name: pipedrive-databases
