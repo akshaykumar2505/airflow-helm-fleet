@@ -17,11 +17,17 @@ airflow:
     AIRFLOW__SMTP__SMTP_PORT: "587"    
   users:
     - username: admin
-      password: admin
+      password: ${AIRFLOW__ADMIN_PASSWORD}
       role: Admin
       email: admin@example.com
       firstName: admin
-      lastName: admin      
+      lastName: admin   
+  usersTemplates:    
+    AIRFLOW__ADMIN_PASSWORD:
+      kind: secret
+      name: airflow-admin-password
+      key: airflow-admin-password    
+  usersUpdate: true
   connections: []
   variables: []
   pools: [] 
@@ -186,7 +192,14 @@ serviceAccount:
   create: true
   name: ""
   annotations: {}
-extraManifests: []
+extraManifests: 
+  - |
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: airflow-admin-password
+    data:
+      airflow-admin-password: {{ `password1` | b64enc | quote }}
 pgbouncer:
   enabled: false
   resources: {}
