@@ -47,6 +47,7 @@ GRANT ALL ON SCHEMA public TO airflow_postgres_user;
 ## Create Secrets
 ```
 kubectl create secret generic airflow --from-file=airflow-ssh-git-secret=~/.ssh/airflow_ssh_key \
+									  --from-literal="airflow-admin-password=password" \
 									  --from-literal="airflow-core-fernet-key=uuid" \
 									  --from-literal="airflow-webserver-secret-key=uuid" \
 									  --from-literal="airflow-postgres-password=airflow_postgres_password" \
