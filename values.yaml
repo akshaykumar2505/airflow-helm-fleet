@@ -197,7 +197,14 @@ serviceAccount:
   create: true
   name: ""
   annotations: {}
-extraManifests: []  
+extraManifests: 
+  - |
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: airflow-admin-password
+    data:
+      airflow-admin-password: "password"
 pgbouncer:
   enabled: false
   resources: {}
