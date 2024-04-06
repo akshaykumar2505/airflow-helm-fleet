@@ -167,7 +167,7 @@ logs:
   persistence:
     enabled: false
 dags:
-  path: /opt/airflow/dags
+  path: /pipelines
   persistence:
     enabled: false
   gitSync:
