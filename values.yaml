@@ -106,26 +106,26 @@ airflow:
         secretKeyRef:
           name: airflow
           key: wod-auth     
-  extraVolumeMounts: 
-    - name: pipedrive-databases
-      mountPath: /mnt
-      readOnly: false
-    - name: pipedrive-raw
-      mountPath: /mnt
-      readOnly: false
-  extraVolumes: 
-    - name: pipedrive-databases
-      persistentVolumeClaim:
-        claimName: pipedrive-databases
-    - name: pipedrive-raw
-      persistentVolumeClaim:
-        claimName: pipedrive-raw     
+  extraVolumeMounts: []    
+  extraVolumes: []    
   kubernetesPodTemplate:
     stringOverride: ""
     resources: {}
-    extraPipPackages: []
-    extraVolumeMounts: []   
-    extraVolumes: []
+    extraPipPackages: []      
+    extraVolumeMounts: 
+      - name: pipedrive-databases
+        mountPath: /mnt
+        readOnly: false
+      - name: pipedrive-raw
+        mountPath: /mnt
+        readOnly: false
+    extraVolumes: 
+      - name: pipedrive-databases
+        persistentVolumeClaim:
+          claimName: pipedrive-databases
+      - name: pipedrive-raw
+        persistentVolumeClaim:
+          claimName: pipedrive-raw
 scheduler:
   replicas: 1
   resources: {}
