@@ -112,7 +112,7 @@ airflow:
       readOnly: false
     - name: pipedrive-raw
       mountPath: /mnt
-      readOnly: false  
+      readOnly: false
   extraVolumes: 
     - name: pipedrive-databases
       persistentVolumeClaim:
