@@ -17,7 +17,7 @@ airflow:
     AIRFLOW__SMTP__SMTP_PORT: "587"    
   users:
     - username: admin
-      password: ${`${AIRFLOW_ADMIN_PASSWORD}`}
+      password: ${AIRFLOW_ADMIN_PASSWORD}
       role: Admin
       email: admin@example.com
       firstName: admin
