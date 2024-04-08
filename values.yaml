@@ -24,7 +24,7 @@ airflow:
       lastName: admin    
   usersTemplates:    
     AIRFLOW_ADMIN_PASSWORD:
-      kind: configmap
+      kind: secret
       name: airflow-admin
       key: password    
   usersUpdate: true
