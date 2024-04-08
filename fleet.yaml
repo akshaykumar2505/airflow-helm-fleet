@@ -4,7 +4,7 @@ helm:
   releaseName: "airflow"
   chart: "airflow"  
   version: "8.8.0"
-  disablePreProcess: false
+  disablePreProcess: true
   force: false
   timeoutSeconds: 0
   valuesFiles:
