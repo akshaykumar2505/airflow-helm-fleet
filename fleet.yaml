@@ -1,8 +1,8 @@
 namespace: pipelines
 helm:
-  releaseName: "airflow"
-  chart: "airflow"
   repo: "https://airflow-helm.github.io/charts"
+  releaseName: "airflow"
+  chart: "airflow"  
   version: "8.8.0"
   disablePreProcess: false
   force: false
