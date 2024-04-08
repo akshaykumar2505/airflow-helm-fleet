@@ -1,8 +1,8 @@
 airflow:
   legacyCommands: false
   image:
-    repository: bytewax
-    tag: airflow-2.7.3
+    repository: airflow
+    tag: bytewax-2.7.3
   executor: KubernetesExecutor
   fernetKey: ""  
   webserverSecretKey: ""
